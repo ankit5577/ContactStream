@@ -1,0 +1,36 @@
+{
+  "language": "Solidity",
+  "sources": {
+    "contracts/Contacts.sol": {
+      "content": "// SPDX-License-Identifier: MIT\npragma solidity ^0.8.27;\n\ncontract Contacts {\n    address public _admin;\n\n    constructor() {\n        _admin = msg.sender;\n    }\n\n    struct Contact {\n        string name;\n        string email;\n        uint256 phone;\n    }\n\n    Contact[] public contacts;\n\n    event ContactCreated(string name, string email, uint256 phone);\n    event Received(address sender, uint256 amount);\n\n    function createContact(\n        string memory _name,\n        string memory _email,\n        uint256 _phone\n    ) public {\n        contacts.push(Contact(_name, _email, _phone));\n        emit ContactCreated(_name, _email, _phone);\n    }\n\n    receive() external payable {\n        emit Received(msg.sender, msg.value);\n    }\n\n    fallback() external payable {\n        emit Received(msg.sender, msg.value);\n    }\n}\n"
+    }
+  },
+  "settings": {
+    "optimizer": {
+      "enabled": true,
+      "runs": 200
+    },
+    "evmVersion": "paris",
+    "outputSelection": {
+      "*": {
+        "*": [
+          "abi",
+          "evm.bytecode",
+          "evm.deployedBytecode",
+          "evm.methodIdentifiers",
+          "metadata",
+          "devdoc",
+          "userdoc",
+          "storageLayout",
+          "evm.gasEstimates"
+        ],
+        "": [
+          "ast"
+        ]
+      }
+    },
+    "metadata": {
+      "useLiteralContent": true
+    }
+  }
+}
