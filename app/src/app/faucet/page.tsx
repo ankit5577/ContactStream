@@ -36,10 +36,10 @@ const FaucetPage: React.FC = () => {
     try {
       const tx = await wallet.sendTransaction({
         to: userAddress,
-        value: ethers.utils.parseEther('0.0005'),
+        value: ethers.utils.parseEther('0.0002'),
       })
       await tx.wait()
-      toast.success(`0.0005 ETH Sent.`, {
+      toast.success(`0.0002 ETH Sent.`, {
         icon: '🎉',
       })
       setTransactionHash(tx.hash)
@@ -55,7 +55,7 @@ const FaucetPage: React.FC = () => {
   if (!isConnected || !isCorrectNetwork) {
     return (
       <div className='mx-auto my-4 max-w-4xl text-center'>
-        <h1 className='text-pretty text-3xl font-semibold '>Connect to Internal RPC.</h1>
+        <h1 className='text-pretty text-3xl font-semibold '>Connect to Arbitrum Sepolia.</h1>
       </div>
     )
   }
@@ -78,7 +78,7 @@ const FaucetPage: React.FC = () => {
           disabled={loading}
           className='ml-2 rounded bg-indigo-600 px-4 py-2 font-bold text-white hover:bg-blue-700 hover:shadow-lg disabled:cursor-not-allowed disabled:opacity-50'
         >
-          Get 0.0005 ETH
+          Get 0.0002 ETH
         </button>
 
         <p className='mt-4 text-pretty text-slate-400'>Believe me, thats a lot of free money. 😵‍💫</p>

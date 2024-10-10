@@ -75,8 +75,8 @@ const Contact = () => {
             </h2>
             <p className='text-body-color dark:text-dark-6 mb-9 text-base leading-relaxed'>
               Secure your favorite contacts on the blockchain, ensuring they’re preserved forever.
-              With Arbitrum Sepolia, enjoy the benefits of decentralization and immutability while
-              managing your most important contacts.
+              With Sepolia, enjoy the benefits of decentralization and immutability while managing
+              your most important contacts.
             </p>
           </div>
         </div>
