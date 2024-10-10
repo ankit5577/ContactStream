@@ -45,7 +45,7 @@ export class WebhookController {
 
     const logs = body.logs[0];
 
-    const iface = new ethers.utils.Interface(eventABI);
+    const iface = new ethers.Interface(eventABI);
     const decodedEvent = iface.decodeEventLog('ContactCreated', logs.data);
 
     const { name, email, phone } = decodedEvent;
