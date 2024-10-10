@@ -9,6 +9,7 @@ export class WebhookController {
   @Post('moralis')
   async handleEvent(@Body() body: any) {
     const eventData = body.event.data;
+    console.log('MORALIS::', body.event.data);
     const { name, email, phone } = eventData;
 
     const contactDto: CreateContactDto = {
