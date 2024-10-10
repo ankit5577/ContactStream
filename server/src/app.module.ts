@@ -27,7 +27,7 @@ import { WebhookController } from './weebhook/moralis';
       port: parseInt(process.env.REDIS_PORT, 10),
       password: process.env.REDIS_PASSWORD,
       username: process.env.REDIS_USERNAME,
-      ttl: 2 * 60, // 30 seconds
+      ttl: 8,
     }),
     MongooseModule.forRoot(process.env.MONGO_DB),
     MongooseModule.forFeature([{ name: Contact.name, schema: ContactSchema }]),
