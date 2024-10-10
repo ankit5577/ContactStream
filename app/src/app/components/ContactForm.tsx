@@ -4,12 +4,14 @@ import * as contactsContract from '@/deployments/arbitrumSepolia/Contacts.json'
 import useEnsureNetwork from '@/services/hooks/useEnsureNetwork'
 import { validateEmail, validatePhone } from '@/utils/common'
 import { EnvelopeIcon, FaceSmileIcon, PhoneIcon } from '@heroicons/react/16/solid'
+import { useQueryClient } from '@tanstack/react-query'
 import { useState } from 'react'
 import { toast } from 'react-hot-toast'
-import { useWriteContract } from 'wagmi'
+import { useWaitForTransactionReceipt, useWriteContract } from 'wagmi'
 import InputField from '../elements/Input'
 
 const Contact = () => {
+  const queryClient = useQueryClient()
   const [form, setForm] = useState({
     name: '',
     email: '',
@@ -49,12 +51,22 @@ const Contact = () => {
         icon: '⌛️',
       })
 
-      await wContract.writeContractAsync({
+      const _data = await wContract.writeContractAsync({
         abi: contactsContract.abi,
         address: contactsContract.address,
         functionName: 'createContact',
         args: [form.name.toString(), form.email.toString(), form.phone.toString()],
       })
+      console.log('YAY::_data', _data)
+
+      const { data, fetchStatus, isError, isFetching, isLoading, isSuccess } =
+        await useWaitForTransactionReceipt({
+          hash: _data,
+        })
+
+      console.log('LAST::', data, fetchStatus, isError, isFetching, isLoading, isSuccess)
+
+      queryClient.invalidateQueries({ queryKey: ['contacts'] })
     } catch (e) {
       const readableError = e?.message?.split('.')[0] || 'Transaction failed.'
       toast.error(readableError, {

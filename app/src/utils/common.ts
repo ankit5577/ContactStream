@@ -19,4 +19,12 @@ const validatePhone = (phone: string) => {
   return phoneRegex.test(phone)
 }
 
-export { checkValidNumber, cn, validateEmail, validatePhone }
+function readableMobile(phoneNo) {
+  return phoneNo.slice(0, 5) + '-' + phoneNo.slice(5)
+}
+
+function capitalize(word) {
+  return word[0].toUpperCase() + word.slice(1)
+}
+
+export { capitalize, checkValidNumber, cn, readableMobile, validateEmail, validatePhone }

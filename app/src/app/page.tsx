@@ -2,6 +2,7 @@
 
 import useEnsureNetwork from '@/services/hooks/useEnsureNetwork'
 import Contact from './components/ContactForm'
+import ContactList from './components/ContactList'
 
 export default function Home() {
   const { isCorrectNetwork } = useEnsureNetwork()
@@ -20,6 +21,7 @@ export default function Home() {
   return (
     <div className='h-28 p-6'>
       <Contact />
+      <ContactList />
     </div>
   )
 }
