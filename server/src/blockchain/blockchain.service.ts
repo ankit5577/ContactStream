@@ -14,11 +14,12 @@ export class BlockchainService implements OnModuleInit {
   private async setupEventStream() {
     try {
       const topic0 =
-        '0x487f94037cb390713b1c694d60144941859c8ec426cf55db82ea272986bca5a3'; // keccak256 of event selector
+        '0x487f94037cb390713b1c694d60144941859c8ec426cf55db82ea272986bca5a3';
+
       const stream = await Moralis.Streams.add({
         tag: 'contact-created-stream',
-        description: 'Listening to ContactCreated event on Arbitrum Sapolia',
-        chains: ['0x66eee'], // Arbitrum Sepolia testnet
+        description: 'Listening to ContactCreated event on Arbitrum Sepolia',
+        chains: ['0x66eee'],
         abi: [
           {
             anonymous: false,
@@ -54,11 +55,11 @@ export class BlockchainService implements OnModuleInit {
       const { id } = stream.toJSON();
 
       await Moralis.Streams.addAddress({
-        address: `${process.env.CONTRACT_ADDR}`,
         id,
+        address: `${process.env.CONTRACT_ADDR}`,
       });
 
-      console.log('Stream Created:', stream);
+      console.log('Stream Created and Contract Address Added:', stream);
     } catch (e) {
       console.error('Error setting up the stream :/ :', e);
     }
