@@ -10,6 +10,11 @@ export class WebhookController {
 
   @Post('moralis')
   async handleEvent(@Body() body: any, @Res() res: Response) {
+    if (!body.confirmed) {
+      console.log('Unconfirmed event received, skipping...');
+      return res.status(200).send('Unconfirmed event, skipping...');
+    }
+
     if (!body.logs || body.logs.length === 0) {
       console.log('Received test webhook from Moralis');
       return res.status(200).send('Test webhook received');
