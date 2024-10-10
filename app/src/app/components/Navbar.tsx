@@ -7,8 +7,8 @@ const Navbar: React.FC = () => {
     <nav className='p-4 text-white'>
       <div className='container mx-auto flex items-center justify-between'>
         <Link href='/' className='hover:text-gray-300'>
-          <div className='inline-flex gap-2 bg-gradient-to-r from-teal-500 via-amber-500 to-pink-800 bg-clip-text text-2xl font-semibold text-transparent'>
-            <BoltIcon className='size-8 text-teal-400' />
+          <div className='inline-flex gap-2 bg-gradient-to-r from-teal-500 via-amber-500 to-pink-800 bg-clip-text text-lg font-semibold text-transparent md:text-2xl'>
+            <BoltIcon className='size-4 text-teal-400 md:size-8' />
             Contact Stream.
           </div>
         </Link>
@@ -39,7 +39,7 @@ const Navbar: React.FC = () => {
 
         <ConnectButton
           showBalance={{
-            smallScreen: true,
+            smallScreen: false,
             largeScreen: true,
           }}
         />
