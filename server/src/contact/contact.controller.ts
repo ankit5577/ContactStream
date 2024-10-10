@@ -13,19 +13,6 @@ export class ContactController {
     return this.contactService.createContact(contactDto);
   }
 
-  @Post('webhook')
-  async handleEvent(@Body() body: any) {
-    const eventData = body.event.data;
-    const { name, email, phone } = eventData;
-    const contactDto: CreateContactDto = {
-      name,
-      email,
-      phone: phone.toString(),
-    };
-
-    return this.contactService.createContact(contactDto);
-  }
-
   @Get()
   @CacheKey('contacts')
   async findAll() {

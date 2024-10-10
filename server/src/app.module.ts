@@ -10,6 +10,7 @@ import { BlockchainService } from './blockchain/blockchain.service';
 import { ContactController } from './contact/contact.controller';
 import { ContactService } from './contact/contact.service';
 import { Contact, ContactSchema } from './schemas/contact.schema';
+import { WebhookController } from './weebhook/moralis';
 
 @Module({
   imports: [
@@ -30,7 +31,7 @@ import { Contact, ContactSchema } from './schemas/contact.schema';
     MongooseModule.forRoot(process.env.MONGO_DB),
     MongooseModule.forFeature([{ name: Contact.name, schema: ContactSchema }]),
   ],
-  controllers: [AppController, ContactController],
+  controllers: [AppController, ContactController, WebhookController],
   providers: [AppService, ContactService, BlockchainService],
 })
 export class AppModule {}

@@ -46,7 +46,7 @@ export class BlockchainService implements OnModuleInit {
             type: 'event',
           },
         ],
-        webhookUrl: `${process.env.API_URL}contact/webhook`,
+        webhookUrl: `${process.env.API_URL}webhook/moralis`,
         includeContractLogs: true,
         topic0: [topic0],
       });
