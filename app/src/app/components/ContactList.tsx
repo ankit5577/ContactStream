@@ -36,7 +36,7 @@ const ContactList = () => {
   } = useQuery<Contact[], Error>({
     queryKey: ['contacts'],
     queryFn: fetchContacts,
-    refetchInterval: 30 * 1000,
+    refetchInterval: 10 * 1000,
   })
 
   if (isLoading) {

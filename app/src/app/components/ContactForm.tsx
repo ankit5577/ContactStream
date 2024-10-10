@@ -7,7 +7,7 @@ import { EnvelopeIcon, FaceSmileIcon, PhoneIcon } from '@heroicons/react/16/soli
 import { useQueryClient } from '@tanstack/react-query'
 import { useState } from 'react'
 import { toast } from 'react-hot-toast'
-import { useWaitForTransactionReceipt, useWriteContract } from 'wagmi'
+import { useWriteContract } from 'wagmi'
 import InputField from '../elements/Input'
 
 const Contact = () => {
@@ -51,22 +51,17 @@ const Contact = () => {
         icon: '⌛️',
       })
 
-      const _data = await wContract.writeContractAsync({
+      await wContract.writeContractAsync({
         abi: contactsContract.abi,
         address: contactsContract.address,
         functionName: 'createContact',
         args: [form.name.toString(), form.email.toString(), form.phone.toString()],
       })
-      console.log('YAY::_data', _data)
-
-      const { data, fetchStatus, isError, isFetching, isLoading, isSuccess } =
-        await useWaitForTransactionReceipt({
-          hash: _data,
-        })
-
-      console.log('LAST::', data, fetchStatus, isError, isFetching, isLoading, isSuccess)
 
       queryClient.invalidateQueries({ queryKey: ['contacts'] })
+      toast.success('Contact saved!', {
+        icon: '🚀',
+      })
     } catch (e) {
       const readableError = e?.message?.split('.')[0] || 'Transaction failed.'
       toast.error(readableError, {
