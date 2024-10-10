@@ -2,7 +2,7 @@
 
 import * as contactsContract from '@/deployments/arbitrumSepolia/Contacts.json'
 import useEnsureNetwork from '@/services/hooks/useEnsureNetwork'
-import { validateEmail, validatePhone } from '@/utils/common'
+import { cn, validateEmail, validatePhone } from '@/utils/common'
 import { EnvelopeIcon, FaceSmileIcon, PhoneIcon } from '@heroicons/react/16/solid'
 import { useQueryClient } from '@tanstack/react-query'
 import { useState } from 'react'
@@ -62,6 +62,12 @@ const Contact = () => {
       toast.success('Contact saved!', {
         icon: '🚀',
       })
+
+      setForm({
+        email: '',
+        phone: '',
+        name: '',
+      })
     } catch (e) {
       const readableError = e?.message?.split('.')[0] || 'Transaction failed.'
       toast.error(readableError, {
@@ -115,7 +121,12 @@ const Contact = () => {
                 <button
                   onClick={handleSubmit}
                   disabled={(wContract.isPending || wContract.isPaused) && !wContract.isError}
-                  className={`border-primary bg-primary w-full rounded border p-3 text-white transition hover:scale-105  hover:bg-teal-500 hover:bg-opacity-90 hover:shadow-lg`}
+                  className={cn(
+                    `border-primary bg-primary w-full rounded border p-3 text-white transition  hover:bg-opacity-90`,
+                    !(wContract.isPending || wContract.isPaused)
+                      ? 'hover:scale-105  hover:bg-teal-500  hover:shadow-lg'
+                      : 'cursor-not-allowed opacity-25'
+                  )}
                 >
                   {wContract.isPending ? 'Saving 👀...' : 'Save Contact 🐣'}
                 </button>
