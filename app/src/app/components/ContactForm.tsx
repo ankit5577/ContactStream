@@ -77,10 +77,10 @@ const Contact = () => {
         <div className='w-full px-4 lg:w-1/2 xl:w-6/12'>
           <div className='mb-12 max-w-[570px] lg:mb-0'>
             <span className='text-primary mb-4 block text-base font-semibold'>Contact Form</span>
-            <h2 className='text-dark mb-6 text-[32px] font-bold uppercase sm:text-[40px] lg:text-[36px] xl:text-[40px] dark:text-white'>
+            <h2 className='mb-6 text-[32px] font-bold uppercase text-slate-100 sm:text-[40px] lg:text-[36px] xl:text-[40px]'>
               Add Your Favorite Contacts to the Blockchain
             </h2>
-            <p className='text-body-color dark:text-dark-6 mb-9 text-base leading-relaxed'>
+            <p className='text-body-color text-md mb-9 leading-relaxed text-slate-100'>
               Secure your favorite contacts on the blockchain, ensuring they’re preserved forever.
               With Sepolia, enjoy the benefits of decentralization and immutability while managing
               your most important contacts.
@@ -88,7 +88,7 @@ const Contact = () => {
           </div>
         </div>
         <div className='w-full px-4 lg:w-1/2 xl:w-5/12'>
-          <div className='dark:bg-dark-2 relative rounded-lg bg-neutral-900 p-8 shadow-lg sm:p-12'>
+          <div className='z-2 dark:bg-dark-2 relative rounded-lg bg-gradient-to-r from-slate-900 to-slate-700 p-8 opacity-95 shadow-lg sm:p-12'>
             <form>
               <InputField
                 type='text'
@@ -115,13 +115,9 @@ const Contact = () => {
                 <button
                   onClick={handleSubmit}
                   disabled={(wContract.isPending || wContract.isPaused) && !wContract.isError}
-                  className={`border-primary bg-primary w-full rounded border p-3 text-white transition ${
-                    wContract.isPending
-                      ? 'hover:scale-105 hover:bg-teal-500 hover:bg-opacity-90 hover:shadow-lg'
-                      : 'opacity-50'
-                  }`}
+                  className={`border-primary bg-primary w-full rounded border p-3 text-white transition hover:scale-105  hover:bg-teal-500 hover:bg-opacity-90 hover:shadow-lg`}
                 >
-                  {wContract.isPending ? 'Saving...' : 'Save Contact'}
+                  {wContract.isPending ? 'Saving 👀...' : 'Save Contact 🐣'}
                 </button>
               </div>
             </form>
@@ -130,7 +126,7 @@ const Contact = () => {
               <p className='mt-3 text-yellow-500'>Transaction is being processed...</p>
             )} */}
             <div>
-              <span className='absolute -right-9 -top-10 z-[-1]'>
+              <span className='absolute -right-9 -top-10 -z-10'>
                 <svg
                   width={100}
                   height={100}
@@ -146,10 +142,10 @@ const Contact = () => {
                   />
                 </svg>
               </span>
-              <span className='absolute -right-10 top-[90px] z-[-1]'>
+              <span className='absolute -right-10 top-[90px] z-[-2]'>
                 <img src={'/t1.svg'} />
               </span>
-              <span className='absolute -bottom-7 -left-7 z-[-1]'>
+              <span className='absolute -bottom-7 -left-16 z-[-2]'>
                 <img src={'/t2.svg'} />
               </span>
             </div>

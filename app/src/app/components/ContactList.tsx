@@ -66,13 +66,13 @@ const ContactList = () => {
               variants={fadeIn}
             >
               <div className='absolute inset-0 -z-10 bg-gradient-to-r from-slate-900 to-slate-700 opacity-50'></div>
-              <p className='text-lg font-semibold text-white'>
+              <p className='font-mono text-lg font-semibold text-white'>
                 <strong>Name:</strong> {capitalize(contact.name)}
               </p>
-              <p className='text-white'>
+              <p className='font-sans text-white '>
                 <strong>Email:</strong> {contact.email}
               </p>
-              <p className='text-white'>
+              <p className='font-mono text-white'>
                 <strong>Phone:</strong> {readableMobile(contact.phone)}
               </p>
               <p className='text-sm text-gray-400'>

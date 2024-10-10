@@ -26,8 +26,8 @@ export default function RootLayout({
           <Toaster position='top-center' />
           <Navbar />
           <div className='container mx-auto px-4'>
-            <div className='rounded-md bg-[radial-gradient(circle_400px_at_50%_300px,#fbfbfb36,#000)] p-2 text-center shadow-md'>
-              <p>
+            <div className='w-full'>
+              <p className='mx-auto rounded-md bg-[radial-gradient(circle_400px_at_50%_300px,#fbfbfb36,#000)] p-2 text-center text-lg text-slate-500 shadow-md'>
                 Contracts are deployed on Arbitrum Sepolia chain. Feel free to get native currency
                 from the{' '}
                 <Link href={'/faucet'} className='text-teal-300 hover:text-teal-600'>
