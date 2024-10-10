@@ -1,5 +1,9 @@
 # ContactStream
 
+built with NestJs, and is deployed on `Railway`
+url: https://contactstream-production.up.railway.app
+& listens to port 80.
+
 ## Blockchain (Verified Contract Deployed on sepolia.arbi)
 
 Network used: `arbitrum-sepolia`
