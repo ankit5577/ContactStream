@@ -12,7 +12,7 @@ export class Contact extends Document {
   @Prop({ required: true })
   phone: string;
 
-  @Prop({ default: Date.now() })
+  @Prop({ default: () => Date.now() })
   date: Date;
 }
 
